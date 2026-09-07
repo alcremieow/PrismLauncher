@@ -1145,6 +1145,20 @@ bool InstanceList::commitStagedInstance(const QString& path, const InstanceTask&
 
         m_instanceSet.insert(instID);
 
+        QString templateDir = QString("instance-templates"); //APPLICATION->settings()->get("TemplateDir").toString();
+        qDebug() << "trying to copy instance dir";
+        if (!templateDir.isEmpty() && QDir(templateDir).exists()) {
+            qDebug() << "copying instance dir";
+            FS::copy folderCopy(templateDir, destination);
+            folderCopy.followSymlinks(false);
+            folderCopy.copyDirectories(true);
+
+            if (!folderCopy()) {
+                qWarning() << "Failed to copy instance template";
+            }
+        }
+
+
         emit instancesChanged();
         emit instanceSelectRequest(instID);
     }
