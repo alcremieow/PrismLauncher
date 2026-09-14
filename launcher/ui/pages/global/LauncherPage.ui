@@ -428,10 +428,10 @@
           <item row="4" column="0">
            <widget class="QLabel" name="labelTemplateDir">
             <property name="toolTip">
-             <string>Folder that gets copied to every new instance on creation. Useful for options.txt.</string>
+             <string>Folder that may get copied to new instances on creation, can be toggled per instance. Useful for options.txt.</string>
             </property>
             <property name="text">
-             <string>Instance &amp;Templates:</string>
+             <string>Instance &amp;Template:</string>
             </property>
             <property name="buddy">
              <cstring>templateDirTextBox</cstring>
